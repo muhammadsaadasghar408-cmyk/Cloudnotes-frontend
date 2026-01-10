@@ -46,7 +46,19 @@ const addNote= async (title,description,tag)=>{
   setNotes(notes.concat(note))
 }
 // delete note 
-const deleteNote=(id)=>{
+const deleteNote= async (id)=>{
+
+const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjk1NGI1NWE4YjMxMWQxNzk4ZmMwZWE4In0sImlhdCI6MTc2NzE1OTEzMH0.fSfl_nh6Kuri2ob5x8VsjubmVsyLsKbrPGM5advRjb4"
+    },
+   
+  });
+  const json= response.json()
+  console.log(json)
+
 console.log("deleting notes with id"+ id)
  const newnotes=notes.filter((note)=>{return note._id!==id})
 setNotes(newnotes)

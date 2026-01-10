@@ -38,16 +38,16 @@ setNote({...note ,[e.target.name]:e.target.value})
               name="description"
            onChange={onchange} />
           </div>
-          <div className="form-group form-check">
+          <div className="form-group">
+            <label htmlFor="tag">Tag</label>
             <input
-              type="checkbox"
-              className="form-check-input"
-              id="exampleCheck1"
-            />
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              Check me out
-            </label>
+              type="text"
+              className="form-control"
+              id="tag"
+              name="tag"
+           onChange={onchange} />
           </div>
+          
           <button type="submit" className="btn btn-primary my-3" onClick={handleclick}>
             Submit
           </button>
