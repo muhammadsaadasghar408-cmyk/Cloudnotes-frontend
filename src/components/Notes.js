@@ -78,7 +78,7 @@ setNote({...note ,[e.target.name]:e.target.value})
               className="form-control"
               id="edescription"
               name="edescription" value={note.edescription}
-           onChange={onchange} />
+           onChange={onchange} minLength={4} required />
           </div>
           <div className="form-group">
             <label htmlFor="etag">Tag</label>
@@ -87,7 +87,7 @@ setNote({...note ,[e.target.name]:e.target.value})
               className="form-control"
               id="etag"
               name="etag" value={note.etag}
-           onChange={onchange} />
+           onChange={onchange} minLength={5} required />
           </div>
           
          
@@ -100,7 +100,7 @@ setNote({...note ,[e.target.name]:e.target.value})
               >
                 Close
               </button>
-              <button type="button" onClick={handleclick} className="btn btn-primary">
+              <button type="button"  onClick={handleclick} className="btn btn-primary">
                 Update notes
               </button>
             </div>
@@ -110,6 +110,9 @@ setNote({...note ,[e.target.name]:e.target.value})
 
       <div className="row my-3">
         <h2>Yours Notes</h2>
+        <div className="container mx-2">
+        {notes.length===0 && 'No Notes to display'}
+        </div>
         {notes.map((note) => {
           return (
             <Noteitem key={note._id} updateNote={updateNote} note={note} />

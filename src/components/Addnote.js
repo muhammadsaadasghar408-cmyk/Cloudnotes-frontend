@@ -10,6 +10,7 @@ function Addnote() {
       const handleclick=(e)=>{
         e.preventDefault();
          addNote(note.title, note.description,note.tag);
+         setNote({title:"",description:"",tag:""})
       }
       const onchange=(e)=>{
 setNote({...note ,[e.target.name]:e.target.value})
@@ -26,7 +27,7 @@ setNote({...note ,[e.target.name]:e.target.value})
               id="title"
               aria-describedby="emailHelp"
               name="title"
-           onChange={onchange} />
+           onChange={onchange} value={note.title} minLength={4} required/>
          
           </div>
           <div className="form-group">
@@ -36,7 +37,7 @@ setNote({...note ,[e.target.name]:e.target.value})
               className="form-control"
               id="description"
               name="description"
-           onChange={onchange} />
+           onChange={onchange} minLength={5} value={note.description} required/>
           </div>
           <div className="form-group">
             <label htmlFor="tag">Tag</label>
@@ -44,11 +45,11 @@ setNote({...note ,[e.target.name]:e.target.value})
               type="text"
               className="form-control"
               id="tag"
-              name="tag"
+              name="tag" value={note.tag}
            onChange={onchange} />
           </div>
           
-          <button type="submit" className="btn btn-primary my-3" onClick={handleclick}>
+          <button type="submit" disabled={note.title.length<4|| note.description.length<5} className="btn btn-primary my-3" onClick={handleclick}>
             Submit
           </button>
         </form>
