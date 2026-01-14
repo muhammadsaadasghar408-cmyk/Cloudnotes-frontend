@@ -18,8 +18,8 @@ const json = await response.json();
 console.log(json)
 if (json.success) {
   localStorage.setItem('token',json.authtoken);
-    navigate("/");
-      props.showAlert("logedin successfully" ,"success")
+  props.showAlert("logged in successfully" ,"success")
+  navigate("/");
 }
 else{
   props.showAlert("invalid credentails" ,"danger")
